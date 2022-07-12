@@ -21,8 +21,11 @@ function InputFeeder(){
     let [ItemList,setItemList] = useState([])
     let [favorList,setFavorList] = useState([])
     let [showFav,setShowFav] = useState(false)
+    
     const toast = useRef(null)
     const msgs1 = useRef(null);
+    
+
     
     const userInputHandler = (evt)=>{
         userInput = evt.target.value
@@ -66,10 +69,13 @@ function InputFeeder(){
 
     }
 
+   
+
     const uid = function(){
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
-    
+
+      
     const removeFavorite = (id,ind)=>{
         
         ItemList[ind].favorites=false; 
@@ -119,12 +125,18 @@ function InputFeeder(){
     
     
 
-    const deleteItem = (id)=>{ 
+    const deleteItem = (id)=>{  
 
-       let itemid = ItemList[id].id  
-       ItemList.splice(id,1); 
-       deleteFavour(itemid);  
-       setItemList([...ItemList]) ; 
+       
+
+        let itemid = ItemList[id].id  
+        ItemList.splice(id,1); 
+        deleteFavour(itemid);  
+        setItemList([...ItemList]) ;  
+        msgs1.current.show([{ severity: 'error', summary: 'Error : ', detail: 'Item Deleted Successfully', sticky: false }])
+
+
+
 
         
     }
@@ -185,13 +197,13 @@ function InputFeeder(){
 
              { showFav===true? <div className="col-sm-6 offset-md-2 bg-bg-white  list card-header container-md"> 
             
-            <h3 className="card-header text-md-center listhead">Favorites Item List</h3>
+            <h3 className="card-header text-md-center favlisthead">Favorites Item List</h3>
             
  
               {
                 favorList.length===0 ? <h3 className="card-body"> No Item found in the list </h3> : favorList.length!==0 &&   favorList.map((item,ind)=>{
-                     return <div className="item card-footer" itemID={item.id} key={item.id}>
-                              <h2 className="text-warning ">{item.item}</h2> 
+                     return <div className="favitem card-footer" itemID={item.id} key={item.id}>
+                              <h2 className="">{item.item}</h2> 
                              
                              
                         <button className="btn btn-dark" id={item.id} onClick={()=>{removeFromFavor(item.id,ind)}} >Remove from Favorites</button>
