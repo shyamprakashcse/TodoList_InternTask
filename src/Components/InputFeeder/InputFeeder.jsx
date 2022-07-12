@@ -59,11 +59,19 @@ function InputFeeder(){
     }
 
     const addFavorite = (ind)=>{
-      let favItem = ItemList[ind] 
-      setFavorList([...favorList,favItem]); 
-      ItemList[ind].favorites = true ;  
-      msgs1.current.show({severity: 'success', summary: 'Favorites: ', detail: 'Item Added into Favorites'});
-    //   msgs1.current.show([{ severity: 'error', summary: 'Error', detail: 'Cannot Add Empty String', sticky: true }])
+         
+        console.log(favorList.length)
+        if(favorList.length>=3){
+            msgs1.current.show([{ severity: 'error', summary: 'Error', detail: 'Cannot Add more than 3 items to favorites', sticky: true }])
+            return null; 
+        }
+       else{ 
+          let favItem = ItemList[ind] 
+          setFavorList([...favorList,favItem]); 
+          ItemList[ind].favorites = true ;  
+          msgs1.current.show({severity: 'success', summary: 'Favorites: ', detail: 'Item Added into Favorites'}); 
+       }
+    
 
 
 
@@ -105,6 +113,8 @@ function InputFeeder(){
 
                  
             }
+            return null; 
+            
             
             
     })
