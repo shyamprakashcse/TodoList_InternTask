@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'react-bootstrap'
+import 'font-awesome/css/font-awesome.min.css';
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme 
+
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
 import App from "./Components/App/App"
 
 
