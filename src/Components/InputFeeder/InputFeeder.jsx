@@ -165,7 +165,7 @@ function InputFeeder(){
     return (
         <div className="row">
             
-            <div className="col-sm-6 offset-md-2 inp   ">
+            <div className="col-sm-6 offset-md-2 inp ">
                 <div className="p-inputgroup">
                     <Button label="ADD" onClick={Add}/>
                     <InputText placeholder="Add your Item into the list" value={userInput} onChange={userInputHandler} />
